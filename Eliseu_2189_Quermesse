@@ -1,0 +1,58 @@
+import java.util.Scanner;
+public class Eliseu_2189_Quermesse {
+    final static Scanner LER = new Scanner(System.in);
+    public static void main (String[] args){
+
+        int ingressoVencedor = 0;
+        int numParticipantes = 0;
+        int valorIngressos[] = new int[numParticipantes];
+
+        do {
+            numParticipantes = lerNumParticipantes(numParticipantes);
+
+            for (int i = 0; i < valorIngressos.length; i++) {
+                valorIngressos = lerValorIngressos(valorIngressos);
+            }
+
+            calcularVencedor(valorIngressos, ingressoVencedor);
+            imprimirVencedor(valorIngressos, ingressoVencedor);
+            
+        } while (numParticipantes != 0);
+    }
+
+    public static int lerNumParticipantes(int numParticipantes) {
+
+        do {
+            numParticipantes = LER.nextInt();
+        } while (numParticipantes < 0 || numParticipantes > 10000);
+
+        return numParticipantes;
+    }
+
+    public static int[] lerValorIngressos(int[] lerValorIngressos) {
+
+        for (int i = 1; i < lerValorIngressos.length; i++) {
+            lerValorIngressos[i] = LER.nextInt();
+        }
+
+        return lerValorIngressos;
+    }
+
+    public static int calcularVencedor(int[] valorIngressos, int ingressoVencedor) {
+
+        for (int i = 1; i < valorIngressos.length; i++) {
+            if (valorIngressos[i] == i){
+                valorIngressos[i] = ingressoVencedor;
+            }
+        }
+
+        return ingressoVencedor;
+    }
+
+    public static void imprimirVencedor(int[] valorIngressos, int ingressoVencedor) {
+        for (int i = 1; i < valorIngressos.length; i++) {
+            System.out.println("Teste " + i);
+            System.out.println(ingressoVencedor);
+        }
+    }
+}
